@@ -2,6 +2,7 @@ package com.example.chitaleBandhu.entity;
 
 import java.util.List;
 
+
 public class Member {
     private long id;
     private String name;

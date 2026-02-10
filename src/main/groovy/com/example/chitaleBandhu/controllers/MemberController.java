@@ -13,13 +13,12 @@ import java.util.Map;
 @RequestMapping("members")
 public class MemberController {
     private Map<Long ,Member> members = new HashMap<>();
-
-    @GetMapping()
+    @GetMapping("get-all")
     public List<Member> getAllMembers(){
         return new ArrayList<Member>(members.values());
     }
 
-    @PostMapping()
+    @PostMapping("add")
     public boolean addMember(@RequestBody Member member){
        return members.put(member.getId() , member) == null;
     }
@@ -29,4 +28,13 @@ public class MemberController {
        return members.get(myId);
     }
 
+    @PutMapping("update/{myId}")
+    public boolean updateMemberById(@PathVariable long myId,@RequestBody Member member){
+    return members.put(member.getId(),member) != null;
+    }
+
+    @DeleteMapping("delete/{myId}")
+    public boolean deleteMemberById(@PathVariable long myId){
+        return members.remove(myId) != null;
+    }
 }
