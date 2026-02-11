@@ -1,8 +1,11 @@
 package com.example.Management.controllers;
 
 import com.example.Management.entity.Task;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,12 +33,12 @@ public class TaskController {
         return tasks.get(myId);
     }
 
-    @GetMapping("update/{myId}")
+    @PutMapping("update/{myId}")
     public boolean updateTask(@PathVariable long myId, @RequestBody Task task){
         return tasks.put(task.getId(myId), task) == null;
     }
 
-    @GetMapping("delete/{myId}")
+    @DeleteMapping("delete/{myId}")
     public boolean deleteTask(@PathVariable long myId){
         return tasks.remove(myId) != null;   
     }
