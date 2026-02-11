@@ -1,0 +1,47 @@
+package com.chitalebandhu.chitalebandhu.controller;
+
+import com.chitalebandhu.chitalebandhu.entity.Member;
+import com.chitalebandhu.chitalebandhu.services.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("members")
+public class MemberController {
+
+    @Autowired
+    private MemberService memberService;
+
+    @GetMapping()
+    public List<Member> getAllMembers(){
+        return memberService.getAllMembers();
+    }
+
+    @PostMapping
+    public boolean addMember(@RequestBody Member member){
+        memberService.addMember(member);
+        return true;
+    }
+
+    @GetMapping("id/{myId}")
+    public ResponseEntity<Member> getMemberById(@PathVariable String myId){
+       Member member = memberService.getMemberById(myId);
+       return ResponseEntity.ok(member);
+    }
+
+    @PutMapping("update/{myId}")
+    public boolean updateMemberById(@PathVariable long myId,@RequestBody Member member){
+        return true;
+    }
+
+    @DeleteMapping("delete/{myId}")
+    public boolean deleteMemberById(@PathVariable long myId){
+        return true;
+    }
+}
