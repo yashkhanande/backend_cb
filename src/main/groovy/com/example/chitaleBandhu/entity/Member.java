@@ -2,7 +2,6 @@ package com.example.Management.entity;
 
 import java.util.List;
 
-
 public class Member {
     private long id;
     private String name;
@@ -28,7 +27,11 @@ public class Member {
         return tasks;
     }
 
-    public void setTasks(List<Long> tasks) {
-        this.tasks = tasks;
+    public void addTask(Long taskId) {
+        this.tasks.add(taskId);
+    }
+
+    public void removeTask(Long taskId){
+        this.tasks.remove(taskId);
     }
 }
