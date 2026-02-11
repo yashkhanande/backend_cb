@@ -1,10 +1,10 @@
-package com.example.chitaleBandhu
+package com.example.Management
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class ChitaleBandhuApplicationTests {
+class ManagementApplicationTests {
 
 	@Test
 	void contextLoads() {

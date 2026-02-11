@@ -1,4 +1,4 @@
-package com.example.chitaleBandhu.entity;
+package com.example.Management.entity;
 
 public class Task {
     private long id;

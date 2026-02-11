@@ -1,11 +1,11 @@
-package com.example.chitaleBandhu
+package com.example.Management
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-class ChitaleBandhuApplication {
+class ManagementApplication {
 	static void main(String[] args) {
-		SpringApplication.run(ChitaleBandhuApplication, args)
+		SpringApplication.run(ManagementApplication, args)
 	}
 }

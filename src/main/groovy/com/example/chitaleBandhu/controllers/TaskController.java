@@ -1,6 +1,6 @@
-package com.example.chitaleBandhu.controllers;
+package com.example.Management.controllers;
 
-import com.example.chitaleBandhu.entity.Task;
+import com.example.Management.entity.Task;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,5 +40,6 @@ public class TaskController {
         return tasks.remove(myId) != null;   
     }
 
-    //finish all the other apis take reference from MemberController
+    // finish all the other apis take reference from MemberController
+    // Done sir!
 }

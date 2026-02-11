@@ -1,7 +1,7 @@
-package com.example.chitaleBandhu.controllers;
+package com.example.Management.controllers;
 
-import com.example.chitaleBandhu.entity.Member;
-import com.example.chitaleBandhu.entity.Task;
+import com.example.Management.entity.Member;
+import com.example.Management.entity.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
