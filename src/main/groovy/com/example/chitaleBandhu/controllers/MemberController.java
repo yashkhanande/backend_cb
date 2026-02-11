@@ -13,12 +13,11 @@ import java.util.Map;
 @RequestMapping("members")
 public class MemberController {
     private Map<Long ,Member> members = new HashMap<>();
-    @GetMapping("get-all")
+
     public List<Member> getAllMembers(){
         return new ArrayList<Member>(members.values());
     }
 
-    @PostMapping("add")
     public boolean addMember(@RequestBody Member member){
        return members.put(member.getId() , member) == null;
     }
