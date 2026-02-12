@@ -5,11 +5,7 @@ import com.chitalebandhu.chitalebandhu.services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("members")
@@ -36,12 +32,14 @@ public class MemberController {
     }
 
     @PutMapping("update/{myId}")
-    public boolean updateMemberById(@PathVariable long myId,@RequestBody Member member){
+    public boolean updateMemberById(@PathVariable String myId,@RequestBody Member member){
+        memberService.updateMemberById(myId , member);
         return true;
     }
 
     @DeleteMapping("delete/{myId}")
-    public boolean deleteMemberById(@PathVariable long myId){
+    public boolean deleteMemberById(@PathVariable String myId){
+        memberService.deleteMemberById(myId) ;
         return true;
     }
 }

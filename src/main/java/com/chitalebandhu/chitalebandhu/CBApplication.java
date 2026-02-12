@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChitaleBandhuApplication {
+public class CBApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(ChitaleBandhuApplication.class, args);
+		SpringApplication.run(CBApplication.class, args);
 	}
-
 }
+

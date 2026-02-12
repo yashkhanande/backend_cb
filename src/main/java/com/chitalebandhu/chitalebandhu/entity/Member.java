@@ -1,16 +1,18 @@
 package com.chitalebandhu.chitalebandhu.entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Document
+@Document(collection = "members")
 public class Member {
     @Id
     private String id;
     private String name;
-    private List<String> tasks;
+    private List<String> tasks = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -32,11 +34,15 @@ public class Member {
         return tasks;
     }
 
-    public void addTask(String taskId) {
-        this.tasks.add(taskId);
+    public void setTasks(List<String> tasks) {
+        if(tasks == null){
+            this.tasks = new ArrayList<>();
+        }else{
+            this.tasks = tasks;
+        }
     }
 
-    public void removeTask(Long taskId){
+    public void removeTask(String taskId){
         this.tasks.remove(taskId);
     }
 }
