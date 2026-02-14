@@ -4,25 +4,42 @@ import com.chitalebandhu.chitalebandhu.DTOs.TaskDTO;
 import com.chitalebandhu.chitalebandhu.entity.Tasks;
 import com.chitalebandhu.chitalebandhu.services.TaskService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("tasks")
 public class TaskController {
 
-    @Autowired
-    private TaskService taskService;
-    private ModelMapper modelMapper;
+    private final TaskService taskService;
+    private final ModelMapper modelMapper;
 
+    public TaskController(TaskService taskService, ModelMapper modelMapper) {
+        this.taskService = taskService;
+        this.modelMapper = modelMapper;
+    }
+
+    // This is just for testing, we dont need this is production
+    @GetMapping("AllTasks")
+    public List<Tasks> getAllTasks(){
+        return taskService.getAllTasks();
+    }
+
+    // I dont know why its nont working, have to fix this
+//    @PutMapping("add")
+//    public ResponseEntity <TaskDTO> addTask(@RequestBody Tasks task){
+//        Tasks savedTask = taskService.addTask(task);
+//        TaskDTO taskDto = modelMapper.map(savedTask, TaskDTO.class);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(taskDto);
+//    }
+
+    // This is working but we dont want this shit
     @PutMapping("add")
-    public ResponseEntity <TaskDTO> addTask(@RequestBody Tasks task){
-        Tasks savedTask = taskService.addTask(task);
-        TaskDTO taskDto = modelMapper.map(savedTask, TaskDTO.class);
-        return ResponseEntity.status(HttpStatus.CREATED).body(taskDto);
+    public void addTask(@RequestBody Tasks task){
+        taskService.addTask(task);
     }
 
     @GetMapping("id/{Id}")

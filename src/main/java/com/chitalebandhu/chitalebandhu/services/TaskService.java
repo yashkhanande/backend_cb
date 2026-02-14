@@ -3,12 +3,22 @@ package com.chitalebandhu.chitalebandhu.services;
 import com.chitalebandhu.chitalebandhu.entity.Tasks;
 import com.chitalebandhu.chitalebandhu.repository.TaskRepository;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+
+@Service
 public class TaskService {
 
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
+
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
+    public List<Tasks> getAllTasks(){
+        return taskRepository.findAll();
+    }
 
     public Tasks addTask(Tasks task){
         return taskRepository.save(task);

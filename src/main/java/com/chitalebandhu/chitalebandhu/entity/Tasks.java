@@ -10,7 +10,7 @@ public class Tasks {
     private String title;
     private String description;
     private String status;
-    private Member owner;
+    private String owner;
     private String remark;
 
     public String getId() {
@@ -41,11 +41,11 @@ public class Tasks {
         this.status = status;
     }
 
-    public Member getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Member owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
