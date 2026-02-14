@@ -1,17 +1,16 @@
 package com.chitalebandhu.chitalebandhu.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tasks")
-public class Task {
+public class Tasks {
     @Id
     private String id;
     private String title;
     private String description;
     private String status;
-    private Member owner;
+    private String owner;
     private String remark;
 
     public String getId() {
@@ -42,17 +41,18 @@ public class Task {
         this.status = status;
     }
 
-    public Member getOwner() {
+    public String getOwner() {
         return owner;
     }
 
-    public void setOwner(Member owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
     public String getRemark() {
         return remark;
     }
+
     public void setRemark(String remark) {
         this.remark = remark;
     }
