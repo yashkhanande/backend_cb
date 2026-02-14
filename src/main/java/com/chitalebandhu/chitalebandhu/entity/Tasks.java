@@ -1,11 +1,10 @@
 package com.chitalebandhu.chitalebandhu.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "tasks")
-public class Task {
+public class Tasks {
     @Id
     private String id;
     private String title;
@@ -53,6 +52,7 @@ public class Task {
     public String getRemark() {
         return remark;
     }
+
     public void setRemark(String remark) {
         this.remark = remark;
     }

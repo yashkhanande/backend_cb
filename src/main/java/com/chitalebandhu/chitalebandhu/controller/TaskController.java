@@ -1,33 +1,42 @@
 package com.chitalebandhu.chitalebandhu.controller;
 
+import com.chitalebandhu.chitalebandhu.DTOs.TaskDTO;
+import com.chitalebandhu.chitalebandhu.entity.Tasks;
+import com.chitalebandhu.chitalebandhu.services.TaskService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("tasks")
 public class TaskController {
-    public List<Task> getAllTasks(){
-        return null;
+
+    @Autowired
+    private TaskService taskService;
+    private ModelMapper modelMapper;
+
+    @PutMapping("add")
+    public ResponseEntity <TaskDTO> addTask(@RequestBody Tasks task){
+        Tasks savedTask = taskService.addTask(task);
+        TaskDTO taskDto = modelMapper.map(savedTask, TaskDTO.class);
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskDto);
     }
 
-    public boolean addTask(@RequestBody Task task){
-        return true;
+    @GetMapping("id/{Id}")
+    public Tasks getTaskById(@PathVariable String Id){
+        return taskService.getTaskById(Id);
     }
 
-    @GetMapping("id/{myId}")
-    public Task getTaskById(@PathVariable long myId){
-        return null;
+    @PutMapping("update/{Id}")
+    public void updateTask(@PathVariable String Id, @RequestBody Tasks newTask){
+        taskService.updateTaskById(Id, newTask);
     }
 
-    @PutMapping("update/{myId}")
-    public boolean updateTask(@PathVariable long myId, @RequestBody Task task){
-        return true;
-    }
-
-    @DeleteMapping("delete/{myId}")
-    public boolean deleteTask(@PathVariable long myId){
-        return true;
+    @DeleteMapping("delete/{Id}")
+    public void deleteTask(@PathVariable String Id){
+        taskService.deleteTaskById(Id);
     }
 }
