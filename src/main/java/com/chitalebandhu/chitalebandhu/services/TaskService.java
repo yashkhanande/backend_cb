@@ -29,6 +29,10 @@ public class TaskService {
                 .orElseThrow(() -> new RuntimeException("Task not found"));
     }
 
+    public List<Tasks> getTaskByOwner(String ownerId){
+        return taskRepository.findByOwnerId(ownerId);
+    }
+
     public void deleteTaskById(String id){
         taskRepository.deleteById(id);
     }
@@ -38,7 +42,7 @@ public class TaskService {
         existingTask.setTitle(newTask.getTitle());
         existingTask.setDescription(newTask.getDescription());
         existingTask.setStatus(newTask.getStatus());
-        existingTask.setOwner(newTask.getOwner());
+        existingTask.setOwnerId(newTask.getOwnerId());
         existingTask.setRemark(newTask.getRemark());
     }
 
