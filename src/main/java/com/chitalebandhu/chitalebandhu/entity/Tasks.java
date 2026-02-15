@@ -10,7 +10,7 @@ public class Tasks {
     private String title;
     private String description;
     private String status;
-    private String owner;
+    private String ownerId;
     private String remark;
 
     public String getId() {
@@ -41,12 +41,12 @@ public class Tasks {
         this.status = status;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getRemark() {
