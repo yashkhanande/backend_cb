@@ -5,10 +5,13 @@ import com.chitalebandhu.chitalebandhu.entity.Tasks;
 import com.chitalebandhu.chitalebandhu.services.TaskService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("tasks")
@@ -43,13 +46,23 @@ public class TaskController {
     }
 
     @GetMapping("member/{ownerId}")
-    public List<Tasks> getTaskByOwner(@PathVariable  String ownerId){
-        return taskService.getTaskByOwner(ownerId);
+    public ResponseEntity<List<Tasks>> getTaskByOwner(@PathVariable  String ownerId){
+        try{
+            List<Tasks> tasks = taskService.getTaskByOwner(ownerId);
+            return new ResponseEntity<>(tasks , HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
-    @GetMapping("id/{Id}")
-    public Tasks getTaskById(@PathVariable String Id){
-        return taskService.getTaskById(Id);
+    @GetMapping("id/{id}")
+    public ResponseEntity<Tasks> getTaskById(@PathVariable String id){
+        try{
+            Tasks task = taskService.getTaskById(id);
+            return new ResponseEntity<>(task , HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND );
+        }
     }
 
     @PutMapping("update/{Id}")

@@ -2,13 +2,13 @@ package com.chitalebandhu.chitalebandhu.services;
 
 import com.chitalebandhu.chitalebandhu.entity.Member;
 import com.chitalebandhu.chitalebandhu.entity.Tasks;
-import com.chitalebandhu.chitalebandhu.exceptions.ResourceNotFoundException;
 import com.chitalebandhu.chitalebandhu.repository.MemberRepository;
 import com.chitalebandhu.chitalebandhu.repository.TaskRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
