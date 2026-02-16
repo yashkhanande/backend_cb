@@ -42,9 +42,9 @@ public class TaskController {
         taskService.addTask(task);
     }
 
-    @GetMapping("{ownerId}/getTasks")
-    public List<Tasks> getTaskByOwner(String Id){
-        return taskService.getTaskByOwner(Id);
+    @GetMapping("member/{ownerId}")
+    public List<Tasks> getTaskByOwner(@PathVariable  String ownerId){
+        return taskService.getTaskByOwner(ownerId);
     }
 
     @GetMapping("id/{Id}")
