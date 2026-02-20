@@ -1,12 +1,9 @@
 package com.chitalebandhu.chitalebandhu.services;
 
-import com.chitalebandhu.chitalebandhu.entity.Member;
 import com.chitalebandhu.chitalebandhu.entity.Tasks;
 import com.chitalebandhu.chitalebandhu.repository.MemberRepository;
 import com.chitalebandhu.chitalebandhu.repository.TaskRepository;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +11,9 @@ import java.util.Optional;
 public class TaskService {
 
     private final TaskRepository taskRepository;
-    private final MemberRepository memberRepository;
 
-    public TaskService(TaskRepository taskRepository, MemberRepository memberRepository) {
+    public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.memberRepository = memberRepository;
     }
 
     public List<Tasks> getAllTasks(){
