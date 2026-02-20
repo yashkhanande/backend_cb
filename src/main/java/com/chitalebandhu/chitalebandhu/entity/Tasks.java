@@ -14,8 +14,11 @@ public class Tasks {
     private String priority;
     private String status;
     private String ownerId;
+    private String teamId;
+    private String parentTaskId;
     private String remark;
-    private LocalDate deadline;
+    private LocalDate deadLine;
+    private LocalDate startDate;
     private List<String> subtasks;
 
     public String getId() {
@@ -71,11 +74,11 @@ public class Tasks {
     }
 
     public LocalDate getDeadline() {
-        return deadline;
+        return deadLine;
     }
 
-    public void setDeadline(LocalDate deadline) {
-        this.deadline = deadline;
+    public void setDeadline(LocalDate deadLine) {
+        this.deadLine = deadLine;
     }
 
     public List<String> getSubtasks() {
@@ -84,5 +87,29 @@ public class Tasks {
 
     public void setSubtasks(List<String> subtasks) {
         this.subtasks = subtasks;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
+    }
+
+    public String getParentTaskId() {
+        return parentTaskId;
+    }
+
+    public void setParentTaskId(String parentTaskId) {
+        this.parentTaskId = parentTaskId;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
     }
 }
