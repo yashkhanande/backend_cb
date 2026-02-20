@@ -29,20 +29,30 @@ public class MemberService {
     public void deleteMemberById(String myId){
         memberRepository.deleteById(myId);
     }
-    public void updateMemberById(String myId, Member member){
-        Member existingMember = memberRepository.findById(myId).orElseThrow( () -> new ResourceNotFoundException("Member not found with id: "+ myId));
-        existingMember.setName(member.getName());
-        System.out.println("Incoming tasks: " + member.getTasks());
-        System.out.println("Existing tasks: " + existingMember.getTasks());
-        if(member.getTasks() != null){
-            existingMember.getTasks().addAll(member.getTasks());
-        }
-        memberRepository.save(existingMember);
-    }
 
-    public void addTask(String taskId, String memberId) {
-        Member tempMember = memberRepository.findById(memberId).orElseThrow(() -> new RuntimeException("Member doesn't exist"));
-        tempMember.addTask(taskId);
-        memberRepository.save(tempMember);
+    public Member updateMemberById(String myId, Member newMember){
+        Optional <Member> existingMember = memberRepository.findById(myId);
+
+        if(existingMember.isEmpty()){
+            return null;
+        }
+
+        if(newMember.getEmail() != null && !newMember.getEmail().trim().isEmpty()){
+            existingMember.get().setEmail(newMember.getEmail());
+        }
+
+        if(newMember.getName() != null && !newMember.getName().trim().isEmpty()){
+            existingMember.get().setName(newMember.getName());
+        }
+
+        if(newMember.getMobileNo() != null && !newMember.getMobileNo().trim().isEmpty()){
+            existingMember.get().setMobileNo(newMember.getMobileNo());
+        }
+
+        if(newMember.getRole() != null && !newMember.getRole().trim().isEmpty()){
+            existingMember.get().setRole(newMember.getRole());
+        }
+
+        return memberRepository.save(existingMember.get());
     }
 }

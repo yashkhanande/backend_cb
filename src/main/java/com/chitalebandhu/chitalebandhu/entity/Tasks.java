@@ -2,6 +2,8 @@ package com.chitalebandhu.chitalebandhu.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.time.LocalDate;
+import java.util.List;
 
 @Document(collection = "tasks")
 public class Tasks {
@@ -13,6 +15,8 @@ public class Tasks {
     private String status;
     private String ownerId;
     private String remark;
+    private LocalDate deadline;
+    private List<String> subtasks;
 
     public String getId() {
         return id;
@@ -64,5 +68,21 @@ public class Tasks {
 
     public void setPriority(String priority) {
         this.priority = priority;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
+
+    public List<String> getSubtasks() {
+        return subtasks;
+    }
+
+    public void setSubtasks(List<String> subtasks) {
+        this.subtasks = subtasks;
     }
 }

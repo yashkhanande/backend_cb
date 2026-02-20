@@ -46,7 +46,7 @@ public class TaskController {
     }
 
     @GetMapping("member/{ownerId}")
-    public ResponseEntity<List<Tasks>> getTaskByOwner(@PathVariable  String ownerId){
+    public ResponseEntity<List<Tasks>> getTaskByOwner(@PathVariable String ownerId){
         try{
             List<Tasks> tasks = taskService.getTaskByOwner(ownerId);
             return new ResponseEntity<>(tasks , HttpStatus.OK);

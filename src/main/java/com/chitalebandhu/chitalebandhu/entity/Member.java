@@ -12,11 +12,9 @@ public class Member {
     @Id
     private String id;
     private String name;
-
     private String email;
     private String mobileNo;
     private String role;
-    private List<String> tasks = new ArrayList<>();
 
     public String getEmail() {
         return email;
@@ -42,10 +40,6 @@ public class Member {
         this.role = role;
     }
 
-    public void addTask(String taskId){
-        this.tasks.add(taskId);
-    }
-
     public String getId() {
         return id;
     }
@@ -60,21 +54,5 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<String> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<String> tasks) {
-        if(tasks == null){
-            this.tasks = new ArrayList<>();
-        }else{
-            this.tasks = tasks;
-        }
-    }
-
-    public void removeTask(String taskId){
-        this.tasks.remove(taskId);
     }
 }
