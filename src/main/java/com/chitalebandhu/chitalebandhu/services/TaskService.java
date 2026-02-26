@@ -1,12 +1,9 @@
 package com.chitalebandhu.chitalebandhu.services;
 
-import com.chitalebandhu.chitalebandhu.entity.Member;
 import com.chitalebandhu.chitalebandhu.entity.Tasks;
 import com.chitalebandhu.chitalebandhu.repository.MemberRepository;
 import com.chitalebandhu.chitalebandhu.repository.TaskRepository;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,11 +11,9 @@ import java.util.Optional;
 public class TaskService {
 
     private final TaskRepository taskRepository;
-    private final MemberRepository memberRepository;
 
-    public TaskService(TaskRepository taskRepository, MemberRepository memberRepository) {
+    public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.memberRepository = memberRepository;
     }
 
     public List<Tasks> getAllTasks(){
@@ -27,9 +22,6 @@ public class TaskService {
 
     public void addTask(Tasks task){
         Tasks savedTask = taskRepository.save(task);
-        Member owner = memberRepository.findById(savedTask.getOwnerId()).orElseThrow(() -> new RuntimeException("Member not found"));
-        owner.addTask(savedTask.getId());
-        memberRepository.save(owner);
     }
 
     public Tasks getTaskById(String id){
@@ -61,15 +53,15 @@ public class TaskService {
             existingTask.get().setDescription(newTask.getDescription());
         }
 
-        if (newTask.getStatus() != null) {
+        if (newTask.getStatus() != null && !newTask.getStatus().trim().isEmpty()) {
             existingTask.get().setStatus(newTask.getStatus());
         }
 
-        if (newTask.getOwnerId() != null) {
+        if (newTask.getOwnerId() != null && !newTask.getOwnerId().trim().isEmpty()) {
             existingTask.get().setOwnerId(newTask.getOwnerId());
         }
 
-        if (newTask.getRemark() != null) {
+        if (newTask.getRemark() != null && !newTask.getRemark().trim().isEmpty()) {
             existingTask.get().setRemark(newTask.getRemark());
         }
 
