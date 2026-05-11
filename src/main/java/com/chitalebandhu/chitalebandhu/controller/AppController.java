@@ -16,7 +16,7 @@ public class AppController {
     public Map<String , Object> getVersion(){
         Map<String, Object> response = new HashMap<>();
 
-        response.put("latestVersion", "1.0.0+1");
+        response.put("latestVersion", "1.0.0");
         response.put("forceUpdate", true);
         response.put("apkUrl", "https://drive.usercontent.google.com/download?id=1OC4KH29DuTppsN2KPLXZwQB2NRP9bzd1&export=download&authuser=0");
 
